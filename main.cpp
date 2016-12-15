@@ -3,9 +3,13 @@
 #include "lista_statkow.h"
 main()
 {
+	ListaStatkow Pierwsza;
+	Pierwsza.DodajPlansze(4,7);
+	Pierwsza.DodajCzteromasztowce(4);
+	Pierwsza.SprawdzKonfiguracje();
+	
 	ListaStatkow Nowa;
 	Nowa.DodajPlanszezKlawiatury();
 	Nowa.DodajStatkizKlawiatury();
-	if (Nowa.SprawdzKonfiguracje()) std::cout<<"TAK\n";
-	std::cout << Nowa.pl;
+	Nowa.SprawdzKonfiguracje();
 }

@@ -14,7 +14,7 @@ public:
 	Statek(const Statek& s);
 	Statek& operator=(const Statek& s);
 	
-
+protected:
 	int wsp_x;
 	int wsp_y;
 	pozycja polozenie;
@@ -38,7 +38,7 @@ public:
 	Jednomasztowiec();
 	Jednomasztowiec(int x, int y, pozycja poz);
 	Jednomasztowiec(const Jednomasztowiec& s);
-
+private:
 	void ZaznaczPrzylegajace(Plansza& pl);
 	void ZajmijPola(Plansza& pl);
 	void CzyscPola(Plansza& pl);
@@ -51,7 +51,7 @@ public:
 	Dwumasztowiec();
 	Dwumasztowiec(int x, int y, pozycja poz);
 	Dwumasztowiec(const Dwumasztowiec& s);
-
+private:
 	void ZaznaczPrzylegajace(Plansza& pl);
 	void ZajmijPola(Plansza& pl);
 	void CzyscPola(Plansza& pl);
@@ -64,7 +64,7 @@ public:
 	Trzymasztowiec();
 	Trzymasztowiec(int x, int y, pozycja poz);
 	Trzymasztowiec(const Trzymasztowiec& s);
-
+private:
 	void ZaznaczPrzylegajace(Plansza& pl);
 	void ZajmijPola(Plansza& pl);
 	void CzyscPola(Plansza& pl);
@@ -77,7 +77,7 @@ public:
 	Czteromasztowiec();
 	Czteromasztowiec(int x, int y, pozycja poz);
 	Czteromasztowiec(const Czteromasztowiec& s);
-
+private:
 	void ZaznaczPrzylegajace(Plansza& pl);
 	void ZajmijPola(Plansza& pl);
 	void CzyscPola(Plansza& pl);

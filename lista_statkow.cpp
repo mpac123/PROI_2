@@ -40,13 +40,20 @@ void ListaStatkow::DodajPlansze(int x, int y)
 bool ListaStatkow::SprawdzKonfiguracje()
 {
 	if (Testuj(0))
+	{
+		std::cout << "TAK\n" <<pl;
 		return true;
+	}
 	else
-		/*pl.CzyscPlansze();*/ return false;
+	{
+		std::cout << "NIE\n";
+		return false;
+	}
 }
 
 bool ListaStatkow::Testuj(int n)
 {
+	//std::cout << n << " " << lista[n]->wsp_x << " " << lista[n]->wsp_y << std::endl << pl << std::endl;
 	if (n>=lista.size())
 		return true;
 	
@@ -62,6 +69,7 @@ bool ListaStatkow::Testuj(int n)
 				lista[n]->UstawStatek(pl);
 				if (Testuj(n+1)) return true;
 				lista[n]->UsunStatek(pl);
+				//std::cout << "Usuwamy " << n << " " << lista[n]->wsp_x << " " << lista[n]->wsp_y << std::endl;
 			}
 			lista[n]->polozenie=poziomy;
 			if (lista[n]->CzySieMiesci(pl))
@@ -69,6 +77,7 @@ bool ListaStatkow::Testuj(int n)
 				lista[n]->UstawStatek(pl);
 				if (Testuj(n+1)) return true;
 				lista[n]->UsunStatek(pl);
+				//std::cout << "Usuwamy " << n << " " << lista[n]->wsp_x << " " << lista[n]->wsp_y << std::endl;
 			}
 		}
 	}

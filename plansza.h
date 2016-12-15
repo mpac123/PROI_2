@@ -22,7 +22,8 @@ public:
 	Plansza(const Plansza& kopiowana);
 	Plansza& operator=(const Plansza& kopiowana);
 	bool operator==(const Plansza& pl);
-	
+
+private:	
 	void ZajmijPole(int x, int y);
 	void CzyscPole(int x, int y);
 	void ZaznaczPrzylegajace(int x, int y);
@@ -34,7 +35,7 @@ public:
 	pole* operator[](int a);
 	const pole* operator[](int a) const;
 	
-private:
+
 	
 	int wym_x;
 	int wym_y;

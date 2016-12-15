@@ -6,9 +6,6 @@ class ListaStatkow
 {
 public:
 	
-	std::vector<Statek*> lista;
-	Plansza pl;
-	
 	void DodajJednomasztowce(int x);
 	void DodajDwumasztowce(int x);
 	void DodajTrzymasztowce(int y);
@@ -19,6 +16,9 @@ public:
 	void DodajPlanszezKlawiatury();
 	
 	bool SprawdzKonfiguracje();
+private:
+	std::vector<Statek*> lista;
+	Plansza pl;
 	bool Testuj(int x);
 	
 	
