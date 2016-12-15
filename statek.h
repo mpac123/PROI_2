@@ -25,6 +25,7 @@ protected:
 	virtual void ZaznaczPrzylegajace(Plansza& pl) = 0;
 	virtual void ZajmijPola(Plansza& pl) =0;
 	virtual void CzyscPola(Plansza& pl) =0;
+	void CzyscPolaOgolem(int n, Plansza& pl);
 	
 	void UstawStatek(Plansza& pl);
 	void UsunStatek(Plansza& pl);

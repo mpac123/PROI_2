@@ -58,7 +58,6 @@ bool ListaStatkow::Testuj(size_t n)
 	
 	if (n>=lista.size())
 		return true;
-	std::cout << n << " " << lista[n]->wsp_x << " " << lista[n]->wsp_y << std::endl << pl << std::endl;
 	for (int i=0; i<pl.wym_x; i++)
 	{
 		for (int j=0; j<pl.wym_y; j++)
@@ -71,7 +70,6 @@ bool ListaStatkow::Testuj(size_t n)
 				lista[n]->UstawStatek(pl);
 				if (Testuj(n+1)) return true;
 				lista[n]->UsunStatek(pl);
-				std::cout << "Usuwamy " << n << " " << lista[n]->wsp_x << " " << lista[n]->wsp_y << std::endl;
 			}
 			lista[n]->polozenie=poziomy;
 			if (lista[n]->CzySieMiesci(pl))
@@ -79,7 +77,6 @@ bool ListaStatkow::Testuj(size_t n)
 				lista[n]->UstawStatek(pl);
 				if (Testuj(n+1)) return true;
 				lista[n]->UsunStatek(pl);
-				std::cout << "Usuwamy " << n << " " << lista[n]->wsp_x << " " << lista[n]->wsp_y << std::endl;
 			}
 		}
 	}

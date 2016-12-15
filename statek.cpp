@@ -155,37 +155,34 @@ void Czteromasztowiec::ZajmijPola(Plansza& pl)
 
 void Jednomasztowiec::CzyscPola(Plansza& pl)
 {
-	pl.CzyscPole(wsp_x, wsp_y);
+	CzyscPolaOgolem(1,pl);
 }
 
 void Dwumasztowiec::CzyscPola(Plansza& pl)
 {
-	pl.CzyscPole(wsp_x,wsp_y);
-	if (polozenie==pionowy)
-		pl.CzyscPole(wsp_x,wsp_y+1);
-	else
-		pl.CzyscPole(wsp_x+1, wsp_y);
+	CzyscPolaOgolem(2,pl);
 }
 
 void Trzymasztowiec::CzyscPola(Plansza& pl)
 {
-	if (polozenie==pionowy)
-		for (int i=0; i<3; i++)
-			pl.CzyscPole(wsp_x,wsp_y+i);
-	else
-		for (int i=0; i<3; i++)
-			pl.CzyscPole(wsp_x+i,wsp_y);
+	CzyscPolaOgolem(3,pl);
 }
 
 void Czteromasztowiec::CzyscPola(Plansza& pl)
 {
+	CzyscPolaOgolem(4,pl);
+}
+
+void Statek::CzyscPolaOgolem(int n, Plansza& pl)
+{
 	if (polozenie==pionowy)
-		for (int i=0; i<4; i++)
+		for (int i=0; i<n; i++)
 			pl.CzyscPole(wsp_x,wsp_y+i);
 	else
-		for (int i=0; i<4; i++)
+		for (int i=0; i<n; i++)
 			pl.CzyscPole(wsp_x+i,wsp_y);
 }
+
 void Statek::PrzylegajaceOgolem(int n, Plansza& pl)
 {
 	if (polozenie==pionowy)
