@@ -4,6 +4,11 @@
 enum pozycja {pionowy, poziomy};
 
 class ListaStatkow;
+
+//klasa czysto wirtualna przechowujaca statki - mogace byc jednomasztowcami,
+//dwumasztowcami, trojmasztowcami lub czteromasztowcami
+//Metody pozwalaja zarzadzac statkiem na planszy -> korzysta z klasy Plansza
+
 class Statek
 {
 public:
@@ -20,16 +25,20 @@ protected:
 	int wsp_y;
 	pozycja polozenie;
 
+	//Funkcja pomocnicza, losujaca wolne wspolrzedne dla statku
 	void Losuj(const Plansza& pl);
+	//Funkcje wywolywane przez metody wirtualne klas pochodnych
 	void PrzylegajaceOgolem(int n, Plansza& pl);
+	void CzyscPolaOgolem(int n, Plansza& pl);
+	void ZajmijPolaOgolem(int n, Plansza& pl);
+	//Funkcje wirtualne
 	virtual void ZaznaczPrzylegajace(Plansza& pl) = 0;
 	virtual void ZajmijPola(Plansza& pl) =0;
 	virtual void CzyscPola(Plansza& pl) =0;
-	void CzyscPolaOgolem(int n, Plansza& pl);
-	void ZajmijPolaOgolem(int n, Plansza& pl);
+	//Funkcje ustawiajace statek
 	void UstawStatek(Plansza& pl);
 	void UsunStatek(Plansza& pl);
-
+	//Funkcja sprawdzajaca czy statek mozna ustawic na danym polu
 	virtual bool CzySieMiesci(const Plansza& pl) =0;
 	bool CzySieMiesciOgolem(int n, const Plansza& pl);
 	

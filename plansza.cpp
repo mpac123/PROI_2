@@ -141,7 +141,7 @@ std::ostream& operator<<(std::ostream &ekran, const Plansza &pl)
 			else if (pl.p[i][j]==zajete)
 				ekran << "X";
 			else if (pl[i][j]==przylega)
-				ekran << "o";
+				ekran << " ";
 		}
 		ekran << "|" << std::endl;
 	}

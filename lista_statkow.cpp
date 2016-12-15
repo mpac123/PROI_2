@@ -86,18 +86,21 @@ bool ListaStatkow::Testuj(size_t n)
 void ListaStatkow::DodajStatkizKlawiatury()
 {
 	int n;
-	std::cout << "Ile jednomasztowcow? ";
-	std::cin >> n;
-	DodajJednomasztowce(n);
-	std::cout << "Ile dwumasztowcow? ";
-	std::cin >> n;
-	DodajDwumasztowce(n);
-	std::cout << "Ile trzymasztowcow? ";
-	std::cin >> n;
-	DodajTrzymasztowce(n);
 	std::cout << "Ile czteromasztowcow? ";
 	std::cin >> n;
 	DodajCzteromasztowce(n);
+	std::cout << "Ile trzymasztowcow? ";
+	std::cin >> n;
+	DodajTrzymasztowce(n);
+	std::cout << "Ile dwumasztowcow? ";
+	std::cin >> n;
+	DodajDwumasztowce(n);
+	std::cout << "Ile jednomasztowcow? ";
+	std::cin >> n;
+	DodajJednomasztowce(n);
+
+	
+	
 }
 
 void ListaStatkow::DodajPlanszezKlawiatury()
