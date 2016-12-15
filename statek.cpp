@@ -61,95 +61,82 @@ void Statek::UsunStatek(Plansza& pl)
 		pl.CzyscWolnePrzylegajace();
 }
 
-bool Jednomasztowiec::CzySieMiesci(Plansza pl)
+bool Jednomasztowiec::CzySieMiesci(const Plansza& pl)
 {
-	if (wsp_x>=pl.wym_x or wsp_y>=pl.wym_y) return false;
-	if (pl[wsp_x][wsp_y]==wolne) return true;
-	else return false;
+	return CzySieMiesciOgolem(1,pl);
 }
 
-bool Dwumasztowiec::CzySieMiesci(Plansza pl)
+bool Dwumasztowiec::CzySieMiesci(const Plansza& pl)
 {
-	int x=wsp_x;
-	int y=wsp_y;
-	if (polozenie==pionowy)
-	{
-		if (y+1>=pl.wym_y) return false;
-		if (pl[x][y]==wolne && pl[x][y+1]==wolne) return true;
-	}
-	else
-	{
-		if (x+1>=pl.wym_x) return false;
-		if (pl[x][y]==wolne && pl[x+1][y]==wolne) return true;
-	}
-	return false;
+	return CzySieMiesciOgolem(2,pl);
 }
 
-bool Trzymasztowiec::CzySieMiesci(Plansza pl)
+bool Trzymasztowiec::CzySieMiesci(const Plansza& pl)
 {
-	int x=wsp_x;
-	int y=wsp_y;
-	if (polozenie==pionowy)
-	{
-		if (y+2>=pl.wym_y) return false;
-		if (pl[x][y]==wolne && pl[x][y+1]==wolne && pl[x][y+2]==wolne) return true;
-	}
-	else
-	{
-		if (x+2>=pl.wym_x) return false;
-		if (pl[x][y]==wolne && pl[x+1][y]==wolne && pl[x+2][y]==wolne) return true;
-	}
-	return false;
+	return CzySieMiesciOgolem(3,pl);
 }	
 
-bool Czteromasztowiec::CzySieMiesci(Plansza pl)
+bool Czteromasztowiec::CzySieMiesci(const Plansza& pl)
 {
+	return CzySieMiesciOgolem(4,pl);
+}
+
+bool Statek::CzySieMiesciOgolem(int n, const Plansza& pl)
+{
+	int pom=0;
 	int x=wsp_x;
 	int y=wsp_y;
 	if (polozenie==pionowy)
 	{
-		if (y+3>=pl.wym_y) return false;
-		if (pl[x][y]==wolne && pl[x][y+1]==wolne && pl[x][y+2]==wolne && pl[x][y+3]==wolne) return true;
+		if (y+n-1>=pl.wym_y) return false;
+		for (int i=0; i<n; i++)
+			if (pl[x][y+i]==wolne) 
+				pom++;
+		if (pom==n)
+			return true;
+		else
+			pom=0;
 	}
 	else
 	{
-		if (x+3>=pl.wym_x) return false;
-		if (pl[x][y]==wolne && pl[x+1][y]==wolne && pl[x+2][y]==wolne && pl[x+3][y]==wolne) return true;
+		if (x+n-1>=pl.wym_x) return false;
+		for (int i=0; i<n; i++)
+			if (pl[x+i][y]==wolne) 
+				pom++;
+		if (pom==n)
+			return true;
+		else
+			pom=0;
 	}
 	return false;
 }
-
 void Jednomasztowiec::ZajmijPola(Plansza& pl)
 {
-	pl.ZajmijPole(wsp_x, wsp_y);
+	ZajmijPolaOgolem(1,pl);
 }
 
 void Dwumasztowiec::ZajmijPola(Plansza& pl)
 {
-	pl.ZajmijPole(wsp_x,wsp_y);
-	if (polozenie==pionowy)
-		pl.ZajmijPole(wsp_x,wsp_y+1);
-	else
-		pl.ZajmijPole(wsp_x+1, wsp_y);
+	ZajmijPolaOgolem(2,pl);
 }
 
 void Trzymasztowiec::ZajmijPola(Plansza& pl)
 {
-	if (polozenie==pionowy)
-		for (int i=0; i<3; i++)
-			pl.ZajmijPole(wsp_x,wsp_y+i);
-	else
-		for (int i=0; i<3; i++)
-			pl.ZajmijPole(wsp_x+i,wsp_y);
+	ZajmijPolaOgolem(3,pl);
 }
 
 void Czteromasztowiec::ZajmijPola(Plansza& pl)
 {
+	ZajmijPolaOgolem(4,pl);
+}
+
+void Statek::ZajmijPolaOgolem(int n, Plansza& pl)
+{
 	if (polozenie==pionowy)
-		for (int i=0; i<4; i++)
+		for (int i=0; i<n; i++)
 			pl.ZajmijPole(wsp_x,wsp_y+i);
 	else
-		for (int i=0; i<4; i++)
+		for (int i=0; i<n; i++)
 			pl.ZajmijPole(wsp_x+i,wsp_y);
 }
 
@@ -182,6 +169,7 @@ void Statek::CzyscPolaOgolem(int n, Plansza& pl)
 		for (int i=0; i<n; i++)
 			pl.CzyscPole(wsp_x+i,wsp_y);
 }
+
 
 void Statek::PrzylegajaceOgolem(int n, Plansza& pl)
 {

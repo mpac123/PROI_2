@@ -26,11 +26,12 @@ protected:
 	virtual void ZajmijPola(Plansza& pl) =0;
 	virtual void CzyscPola(Plansza& pl) =0;
 	void CzyscPolaOgolem(int n, Plansza& pl);
-	
+	void ZajmijPolaOgolem(int n, Plansza& pl);
 	void UstawStatek(Plansza& pl);
 	void UsunStatek(Plansza& pl);
 
-	virtual bool CzySieMiesci(Plansza pl) =0;
+	virtual bool CzySieMiesci(const Plansza& pl) =0;
+	bool CzySieMiesciOgolem(int n, const Plansza& pl);
 	
 	
 };
@@ -45,7 +46,7 @@ private:
 	void ZaznaczPrzylegajace(Plansza& pl);
 	void ZajmijPola(Plansza& pl);
 	void CzyscPola(Plansza& pl);
-	bool CzySieMiesci(Plansza pl);
+	bool CzySieMiesci(const Plansza& pl);
 };
 
 class Dwumasztowiec : public Statek
@@ -58,7 +59,7 @@ private:
 	void ZaznaczPrzylegajace(Plansza& pl);
 	void ZajmijPola(Plansza& pl);
 	void CzyscPola(Plansza& pl);
-	bool CzySieMiesci(Plansza pl);
+	bool CzySieMiesci(const Plansza& pl);
 };
 
 class Trzymasztowiec : public Statek
@@ -71,7 +72,7 @@ private:
 	void ZaznaczPrzylegajace(Plansza& pl);
 	void ZajmijPola(Plansza& pl);
 	void CzyscPola(Plansza& pl);
-	bool CzySieMiesci(Plansza pl);
+	bool CzySieMiesci(const Plansza& pl);
 };
 
 class Czteromasztowiec : public Statek
@@ -84,6 +85,6 @@ private:
 	void ZaznaczPrzylegajace(Plansza& pl);
 	void ZajmijPola(Plansza& pl);
 	void CzyscPola(Plansza& pl);
-	bool CzySieMiesci(Plansza pl);
+	bool CzySieMiesci(const Plansza& pl);
 };
 #endif

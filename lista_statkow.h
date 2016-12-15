@@ -8,7 +8,7 @@ public:
 	
 	void DodajJednomasztowce(int x);
 	void DodajDwumasztowce(int x);
-	void DodajTrzymasztowce(int y);
+	void DodajTrzymasztowce(int x);
 	void DodajCzteromasztowce(int x);
 	void DodajStatkizKlawiatury();
 	
