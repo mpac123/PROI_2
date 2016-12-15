@@ -3,33 +3,35 @@
 #include <vector>
 #include "plansza.h"
 
-
+ListaStatkow::~ListaStatkow()
+{
+	for (size_t i=0; i<lista.size(); i++)
+	{
+		delete lista[i];
+	}
+}
 void ListaStatkow::DodajJednomasztowce(int x)
 {
-	Jednomasztowiec* s=new Jednomasztowiec;
 	for (int i=0; i<x; i++)
-		lista.push_back(s);
+		lista.push_back(new Jednomasztowiec);
 }
 
 void ListaStatkow::DodajDwumasztowce(int x)
 {
-	Dwumasztowiec* s=new Dwumasztowiec;
 	for (int i=0; i<x; i++)
-		lista.push_back(s);
+		lista.push_back(new Dwumasztowiec);
 }
 
 void ListaStatkow::DodajTrzymasztowce(int x)
 {
-	Trzymasztowiec* s=new Trzymasztowiec;
 	for (int i=0; i<x; i++)
-		lista.push_back(s);
+		lista.push_back(new Trzymasztowiec);
 }
 
 void ListaStatkow::DodajCzteromasztowce(int x)
 {
-	Czteromasztowiec* s=new Czteromasztowiec;
 	for (int i=0; i<x; i++)
-		lista.push_back(s);
+		lista.push_back(new Czteromasztowiec);
 }
 
 void ListaStatkow::DodajPlansze(int x, int y)
@@ -51,12 +53,12 @@ bool ListaStatkow::SprawdzKonfiguracje()
 	}
 }
 
-bool ListaStatkow::Testuj(int n)
+bool ListaStatkow::Testuj(size_t n)
 {
-	//std::cout << n << " " << lista[n]->wsp_x << " " << lista[n]->wsp_y << std::endl << pl << std::endl;
+	
 	if (n>=lista.size())
 		return true;
-	
+	std::cout << n << " " << lista[n]->wsp_x << " " << lista[n]->wsp_y << std::endl << pl << std::endl;
 	for (int i=0; i<pl.wym_x; i++)
 	{
 		for (int j=0; j<pl.wym_y; j++)
@@ -69,7 +71,7 @@ bool ListaStatkow::Testuj(int n)
 				lista[n]->UstawStatek(pl);
 				if (Testuj(n+1)) return true;
 				lista[n]->UsunStatek(pl);
-				//std::cout << "Usuwamy " << n << " " << lista[n]->wsp_x << " " << lista[n]->wsp_y << std::endl;
+				std::cout << "Usuwamy " << n << " " << lista[n]->wsp_x << " " << lista[n]->wsp_y << std::endl;
 			}
 			lista[n]->polozenie=poziomy;
 			if (lista[n]->CzySieMiesci(pl))
@@ -77,7 +79,7 @@ bool ListaStatkow::Testuj(int n)
 				lista[n]->UstawStatek(pl);
 				if (Testuj(n+1)) return true;
 				lista[n]->UsunStatek(pl);
-				//std::cout << "Usuwamy " << n << " " << lista[n]->wsp_x << " " << lista[n]->wsp_y << std::endl;
+				std::cout << "Usuwamy " << n << " " << lista[n]->wsp_x << " " << lista[n]->wsp_y << std::endl;
 			}
 		}
 	}

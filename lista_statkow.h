@@ -16,10 +16,11 @@ public:
 	void DodajPlanszezKlawiatury();
 	
 	bool SprawdzKonfiguracje();
+	~ListaStatkow();
 private:
 	std::vector<Statek*> lista;
 	Plansza pl;
-	bool Testuj(int x);
+	bool Testuj(size_t x);
 	
 	
 private:

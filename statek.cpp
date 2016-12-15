@@ -16,6 +16,7 @@ Statek& Statek::operator=(const Statek& s)
 	wsp_x=s.wsp_x;
 	wsp_y=s.wsp_y;
 	polozenie=s.polozenie;
+	return *this;
 }
 Jednomasztowiec::Jednomasztowiec() : Statek() {}
 Dwumasztowiec::Dwumasztowiec() : Statek() {}

@@ -1,7 +1,7 @@
 #include "plansza.h"
 #include "statek.h"
 #include "lista_statkow.h"
-main()
+int main()
 {
 	ListaStatkow Pierwsza;
 	Pierwsza.DodajPlansze(4,7);
@@ -12,4 +12,6 @@ main()
 	Nowa.DodajPlanszezKlawiatury();
 	Nowa.DodajStatkizKlawiatury();
 	Nowa.SprawdzKonfiguracje();
+	
+	return 0;
 }

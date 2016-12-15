@@ -10,6 +10,7 @@ public:
 	friend class ListaStatkow;
 	
 	Statek();
+	virtual ~Statek() {};
 	Statek(int x, int y, pozycja poz);
 	Statek(const Statek& s);
 	Statek& operator=(const Statek& s);
@@ -21,14 +22,15 @@ protected:
 
 	void Losuj(const Plansza& pl);
 	void PrzylegajaceOgolem(int n, Plansza& pl);
-	virtual void ZaznaczPrzylegajace(Plansza& pl) {};
-	virtual void ZajmijPola(Plansza& pl) {};
-	virtual void CzyscPola(Plansza& pl) {};
+	virtual void ZaznaczPrzylegajace(Plansza& pl) = 0;
+	virtual void ZajmijPola(Plansza& pl) =0;
+	virtual void CzyscPola(Plansza& pl) =0;
 	
 	void UstawStatek(Plansza& pl);
 	void UsunStatek(Plansza& pl);
 
-	virtual bool CzySieMiesci(Plansza pl) {};
+	virtual bool CzySieMiesci(Plansza pl) =0;
+	
 	
 };
 

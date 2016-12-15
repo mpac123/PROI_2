@@ -1,5 +1,5 @@
 #include "plansza.h"
-Plansza::Plansza() {wym_x=0; wym_y=0; p=new pole*;}
+Plansza::Plansza() {wym_x=0; wym_y=0; p=NULL;}
 Plansza::Plansza(int x, int y) : wym_x(x), wym_y(y)
 {
 	p=new pole*[x];
@@ -39,6 +39,7 @@ Plansza& Plansza::operator=(const Plansza& kopiowana)
 	
 	for (int i=0; i<wym_x; i++)
 		delete[] p[i];
+		
 	delete[] p;
 	p=NULL;
 	
