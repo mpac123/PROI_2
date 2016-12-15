@@ -3,74 +3,84 @@
 #include "plansza.h"
 enum pozycja {pionowy, poziomy};
 
-class Gra;
+class ListaStatkow;
 class Statek
 {
 public:
+	friend class ListaStatkow;
+	
 	Statek();
-	Statek(Plansza p);
-	friend class Gra;
-	virtual ~Statek();
-	Statek(int x, int y, pozycja poz, Plansza p);
-	Plansza pl;
+	Statek(int x, int y, pozycja poz);
+	Statek(const Statek& s);
+	Statek& operator=(const Statek& s);
 	
-protected:
-	
-	progress check;
+
 	int wsp_x;
 	int wsp_y;
 	pozycja polozenie;
+
+	void Losuj(const Plansza& pl);
+	void PrzylegajaceOgolem(int n, Plansza& pl);
+	virtual void ZaznaczPrzylegajace(Plansza& pl) {};
+	virtual void ZajmijPola(Plansza& pl) {};
+	virtual void CzyscPola(Plansza& pl) {};
 	
-	void Losuj();
-	void Dobierz();
-	void PrzylegajaceOgolem(int n);
-	virtual void ZaznaczPrzylegajace() {};
-	virtual void ZajmijPola() {};
+	void UstawStatek(Plansza& pl);
+	void UsunStatek(Plansza& pl);
+
+	virtual bool CzySieMiesci(Plansza pl) {};
 	
-	virtual bool CzySieMiesci(int x, int y, pozycja poz) {};
 };
 
 class Jednomasztowiec : public Statek
 {
 public:
-	Jednomasztowiec(Plansza p);
-	~Jednomasztowiec();
-private:
-	void ZaznaczPrzylegajace();
-	void ZajmijPola();
-	bool CzySieMiesci(int x, int y, pozycja poz=pionowy);
+	Jednomasztowiec();
+	Jednomasztowiec(int x, int y, pozycja poz);
+	Jednomasztowiec(const Jednomasztowiec& s);
+
+	void ZaznaczPrzylegajace(Plansza& pl);
+	void ZajmijPola(Plansza& pl);
+	void CzyscPola(Plansza& pl);
+	bool CzySieMiesci(Plansza pl);
 };
 
 class Dwumasztowiec : public Statek
 {
 public:
-	Dwumasztowiec(Plansza p);
-	~Dwumasztowiec();
-private:
-	void ZaznaczPrzylegajace();
-	void ZajmijPola();
-	bool CzySieMiesci(int x, int y, pozycja poz);
+	Dwumasztowiec();
+	Dwumasztowiec(int x, int y, pozycja poz);
+	Dwumasztowiec(const Dwumasztowiec& s);
+
+	void ZaznaczPrzylegajace(Plansza& pl);
+	void ZajmijPola(Plansza& pl);
+	void CzyscPola(Plansza& pl);
+	bool CzySieMiesci(Plansza pl);
 };
 
 class Trzymasztowiec : public Statek
 {
 public:
-	Trzymasztowiec(Plansza p);
-	~Trzymasztowiec();
-private:
-	void ZaznaczPrzylegajace();
-	void ZajmijPola();
-	bool CzySieMiesci(int x, int y, pozycja poz);
+	Trzymasztowiec();
+	Trzymasztowiec(int x, int y, pozycja poz);
+	Trzymasztowiec(const Trzymasztowiec& s);
+
+	void ZaznaczPrzylegajace(Plansza& pl);
+	void ZajmijPola(Plansza& pl);
+	void CzyscPola(Plansza& pl);
+	bool CzySieMiesci(Plansza pl);
 };
 
 class Czteromasztowiec : public Statek
 {
 public:
-	Czteromasztowiec(Plansza p);
-	~Czteromasztowiec();
-private:
-	void ZaznaczPrzylegajace();
-	void ZajmijPola();
-	bool CzySieMiesci(int x, int y, pozycja poz);
+	Czteromasztowiec();
+	Czteromasztowiec(int x, int y, pozycja poz);
+	Czteromasztowiec(const Czteromasztowiec& s);
+
+	void ZaznaczPrzylegajace(Plansza& pl);
+	void ZajmijPola(Plansza& pl);
+	void CzyscPola(Plansza& pl);
+	bool CzySieMiesci(Plansza pl);
 };
 #endif

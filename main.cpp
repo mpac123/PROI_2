@@ -1,10 +1,11 @@
 #include "plansza.h"
+#include "statek.h"
+#include "lista_statkow.h"
 main()
 {
-	Plansza plansza1(5,10);
-	plansza1.ZajmijPole(3,5);
-	plansza1.ZajmijPole(4,0);
-	
-	plansza1[4][1]=zajete;
-	std::cout << plansza1;
+	ListaStatkow Nowa;
+	Nowa.DodajPlanszezKlawiatury();
+	Nowa.DodajStatkizKlawiatury();
+	if (Nowa.SprawdzKonfiguracje()) std::cout<<"TAK\n";
+	std::cout << Nowa.pl;
 }

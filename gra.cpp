@@ -8,17 +8,23 @@ Gra::Gra(Plansza p) : pl(p)
 	KonfiguracjaStatkowzKlawiatury();
 }
 
-Gra::Gra()
+/*Gra::Gra()
 {
 	KonfiguracjaPlanszyzKlawiatury();
 	KonfiguracjaStatkowzKlawiatury();
 }
-
+*/
 Gra::Gra(Plansza p, const std::vector<Statek>& ls) : pl(p), lista_statkow(ls) {}
 
 void Gra::DodajStatek(const Statek& s)
 {
 	lista_statkow.push_back(s);
+}
+
+void Gra::UstawStatek(Statek s)
+{
+	s.ZajmijPola(pl);
+	s.ZaznaczPrzylegajace(pl);
 }
 
 void Gra::KonfiguracjaStatkowzKlawiatury()
@@ -27,19 +33,19 @@ void Gra::KonfiguracjaStatkowzKlawiatury()
 	std::cout << "Ile czteromasztowcow? ";
 	std::cin >> n;
 	for (int i=0; i<n; i++)
-		DodajStatek(Czteromasztowiec(pl));
+		DodajStatek(Czteromasztowiec());
 	std::cout << "Ile trzymasztowcow? ";
 	std::cin >> n;
 	for (int i=0; i<n; i++)
-		DodajStatek(Trzymasztowiec(pl));
+		DodajStatek(Trzymasztowiec());
 	std::cout << "Ile dwumasztowcow? ";
 	std::cin >> n;
 	for (int i=0; i<n; i++)
-		DodajStatek(Dwumasztowiec(pl));
+		DodajStatek(Dwumasztowiec());
 	std::cout << "Ile jednomasztowcow? ";
 	std::cin >> n;
 	for (int i=0; i<n; i++)
-		DodajStatek(Jednomasztowiec(pl));
+		DodajStatek(Jednomasztowiec());
 }
 
 void Gra::KonfiguracjaPlanszyzKlawiatury()
@@ -50,16 +56,4 @@ void Gra::KonfiguracjaPlanszyzKlawiatury()
 	Plansza pl(n,m);
 }
 
-bool Gra::CzyKonfiguracjaMozliwa(int n)
-{
-	if (n>=lista_statkow.size())
-		return true;
-	
-	lista_statkow[n].Dobierz();
-	if (lista_statkow[n].check!=failed)
-		if (CzyKonfiguracjaMozliwa(n+1)) return true;
-	else
-		return false;
-			
-}
-	
+
